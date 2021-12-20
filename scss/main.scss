@@ -1,0 +1,732 @@
+
+$light-color: #eeeeee;
+$blue-font: #8ab4f8;
+$back-ground: #383838;
+$grey-font : #999;
+$pink-color: #f08f89;
+$darker-background: #222222; 
+
+// =============== mixin =============== 
+// transitions 
+@mixin easeOut {
+    transition: all .3s ease-out;
+}
+
+// =============== keyframes =============== 
+@keyframes flicker {
+    
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+  
+        text-shadow:
+        0 0 4px #fff,
+        0 0 11px #fff,
+        0 0 19px #fff,
+        0 0 40px #bf4080,
+        0 0 80px #bf4080,
+        0 0 90px #bf4080,
+        0 0 100px #bf4080,
+        0 0 150px #bf4080;
+    
+    }
+    
+    20%, 24%, 55% {        
+        text-shadow: none;
+    }    
+}
+
+// =============== functions =============== 
+// set text color
+@function set-icon-color($color) {
+    @if(lightness($color) > 40) {
+        @return #fff;
+    } @else {
+        @return #000;
+    }
+}
+
+
+// =============== styles =============== 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: $back-ground;
+}
+
+
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+// =============== navbar =============== 
+
+nav{
+    position: fixed;
+    width: 100%;        
+    z-index: 9999;
+
+    .nav-links {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'futura', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 15px;
+        height: 50px;
+        background-color: $back-ground;
+
+        li {
+            list-style-type: none;
+            padding: 20px 220px 0 0;
+
+        }
+
+        a {
+            text-decoration: none;
+            color: $grey-font;
+            height: 100%;
+
+            &:hover {
+                color: $pink-color;
+                background-color: rgba(lighten($back-ground, 2), .5);
+                @include easeOut();
+            }
+        }
+    }
+}
+
+// =============== icons =============== 
+.icons {
+    width: 5rem;
+    height: 100vh;
+    position: fixed;
+    top: 35vh;
+    left: 95%;
+    z-index: 100;
+
+        .side-nav {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .nav-item:last-child {
+            margin-top: auto;
+        }
+
+        a {
+            padding: .4rem;
+            display: flex;
+            align-items: center;
+            height: 7rem;
+            text-decoration: none;
+            color: $grey-font;
+
+                &:hover {
+                    color: $pink-color;
+                    @include easeOut();
+                }
+        }
+}
+
+// =============== intro =============== 
+main {
+    color: $light-color;
+    padding: 4rem 0 0 8rem;
+    height: 90vh;
+    background-color: $back-ground;
+
+    .intro {
+        margin-top: 30vh;
+        margin-left: 30vh;
+    }
+
+    h1 {
+        font-size: 8rem;
+        font-family: 'futura', Tahoma, Geneva, Verdana, sans-serif;
+
+            span {
+                color: $blue-font;
+            }
+    }
+
+    h2 {
+        font-family: 'futura', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 4.4rem;
+    }
+
+    .hello {
+        color: $pink-color;
+        margin-left: 1.5rem;
+        font-size: 20px;
+        font-family: 'Nunito Sans', sans-serif;
+        font-weight: 900;
+    }
+
+    .hwl {
+        position: relative;
+        width: 13px;
+        height: 2px;
+        background: $pink-color;
+        top: .9rem;
+    }
+
+// =============== carousel =============== 
+    .slideshow-container {
+        width: 100px;
+        height: 100px;
+        position: relative;
+
+        .a-p {
+            font-size: 2.5rem;
+            font-family: 'futura', Tahoma, Geneva, Verdana, sans-serif;
+
+        }
+
+        .slides {
+            width: 100%;
+            height: 100px;
+            text-align: center;
+            margin: -3.2rem 0 1rem 3rem;
+            overflow: hidden;
+            width: 345px;
+        }
+
+        .slide {
+            transition: all 0.25s ease-in-out;
+        }
+
+        .slide-para {
+            margin-bottom: 1.4rem;
+            background:rgba(lighten($back-ground, 2), 4);
+            font-family: 'futura', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 2.5rem;
+        }
+    }
+
+    a {
+        color: $light-color;
+        text-decoration: none;
+    }
+}
+
+// // =============== icons =============== 
+// .icons {
+//     width: 5rem;
+//     height: 100vh;
+//     position: fixed;
+//     top: 35vh;
+//     left: 95%;
+//     z-index: 100;
+
+//         .side-nav {
+//             padding: 0;
+//             margin: 0;
+//             display: flex;
+//             flex-direction: column;
+//             align-items: center;
+//         }
+// // nav-item is if you want to add a dark/lightmode buton. just add this class and create it in html
+//         .nav-item {
+//             width: 100%;
+
+//         }
+
+//         .nav-item:last-child {
+//             margin-top: auto;
+//         }
+
+//         a {
+//             padding: .4rem;
+//             color: $light-color;
+//             display: flex;
+//             align-items: center;
+//             height: 7rem;
+//             text-decoration: none;
+
+//                 &:hover {
+//                     color: $pink-color;
+//                     @include easeOut();
+//                 }
+//         }
+// }
+
+// =============== arrow down  =============== 
+.down-arrow {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 85vh;
+    left: 50vw;
+    z-index: 5;
+    transition: opacity .5s;
+}
+
+.goodbye {
+    visibility: hidden;
+}
+
+// =============== about =============== 
+.about {
+    visibility: visible;
+    background-color: $light-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-bottom: 8rem;
+    transition: opacity .8s;
+    height: 80vh;
+    
+// =============== resume button =============== 
+    .img-btn-container {
+        width: 30%;
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center; 
+        text-align: center;
+        margin-top: 10vh;
+        padding-right: 18rem;
+// =============== end resume button =============== 
+
+        .portfolio-img {
+            height: 45vh;
+            border-radius: 6px;
+            margin-bottom: 5%;
+        }
+
+        .r-btn {
+            color: $blue-font;
+            background: rgba(lighten($back-ground, 8), 4);
+            text-decoration: none;
+            border: none;
+            width: 250px;
+            height: 40px;
+            border-radius: 7px;
+            font-family: 'Nunito Sans', sans-serif;
+
+            &:hover {
+                cursor: pointer;
+                background-color: $blue-font;
+                color: rgba(lighten($back-ground, 8), 4);
+            }
+        }
+    }
+// =============== about text =============== 
+
+    .p-container{
+        margin-top: 5vh;
+        margin-left: 5vw;
+
+        .al {
+            position: relative;
+            top: .9rem;
+            width: 13px;
+            height: 2px;
+            border-radius: 90%;
+            background: $pink-color;
+        }
+
+        .about-p {
+            color: $pink-color;
+            margin-left: 1.5rem;
+            font-size: 20px;
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight: 900;
+
+        }
+
+        .first-p {
+            width: 400px;
+            font-size: 1.1rem;
+            color: $back-ground;
+            font-family: 'futura', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .second-p { 
+            width: 400px;
+            font-size: 1.1rem;
+            color: $back-ground;
+            font-family: 'futura', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    }
+}
+
+// =============== languages and tools =============== 
+.skills {
+    visibility: visible;
+    background: $back-ground;
+    position: relative;
+    height: 100vh;
+    transition: opacity 2.2s;
+    height: 80vh;
+
+    .smooth {
+        font-family: 'Nunito Sans', sans-serif;
+        color: $pink-color;
+        position: relative;
+        margin: 7rem 0 0 26rem;
+        font-weight: 900;
+        font-size: 2.6rem;
+    }
+
+    .l-t-container{
+ 
+
+        .languages-tools {
+            font-family: 'futura', Tahoma, Geneva, Verdana, sans-serif;
+            color: $light-color;
+            position: relative;
+            margin: 4rem 0 0 26rem;
+            font-weight: 900;
+            font-size: 3rem;
+            width: 45%;
+        }
+    }
+
+// =============== bullet points =============== 
+    .box-container {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding-top: 13vh;
+        padding-left: 8rem;
+
+// =============== first bullet points =============== 
+        .first-box {
+            padding-left: 8rem;
+            font-family: 'futura', Tahoma, Geneva, Verdana, sans-serif;
+            border-radius: 6px;
+            display: flex;
+            white-space: nowrap;
+            flex-direction: column;
+            height: 300px;
+            padding-right: 30px; 
+            margin-right: 9rem;
+
+            .f-b-l {
+                position: relative;
+                width: 23px;
+                height: 2px;
+                background: $blue-font;
+                right: 55px;
+                top: .8rem;
+            }
+
+            .work-flow{
+                color: $blue-font;
+                font-family: 'futura', Tahoma, Geneva, Verdana, sans-serif;
+                position: relative;
+                right: 20px;
+            }
+
+            ul {
+                line-height: 40px;
+                color: $light-color;
+                font-family: 'Nunito Sans', sans-serif;
+                font-weight: 900;
+            }
+            
+        }
+
+// =============== second bullet point =============== 
+        .second-box {
+            padding-left: 8rem;
+            font-family: 'futura', Tahoma, Geneva, Verdana, sans-serif;
+            border-radius: 6px;
+            display: flex;
+            white-space: nowrap;
+            flex-direction: column;
+            height: 300px;
+            padding-right: 30px; 
+            margin-right: 9rem;
+
+
+            .l-l {
+                position: relative;
+                width: 23px;
+                height: 2px;
+                background: $blue-font;
+                right: 55px;
+                top: .8rem;
+            }
+
+            .languages {
+                color: $blue-font;
+                font-family: 'futura', Tahoma, Geneva, Verdana, sans-serif;
+                position: relative;
+                right: 20px;
+            }
+
+            ul {
+                line-height: 40px;
+                color: $light-color;
+                font-family: 'Nunito Sans', sans-serif;
+                font-weight: 900;
+            }
+        }
+        
+// =============== third bullet point =============== 
+        .third-box {
+            padding-left: 8rem;
+            font-family: 'futura', Tahoma, Geneva, Verdana, sans-serif;
+            border-radius: 6px;
+            display: flex;
+            white-space: nowrap;
+            flex-direction: column;
+            height: 300px;
+            padding-right: 30px; 
+            margin-right: 9rem;
+
+
+            .tool-l {
+                position: relative;
+                width: 23px;
+                height: 2px;
+                background: $blue-font;
+                right: 55px;
+                top: .8rem;
+            }
+
+            .tools{
+                color: $blue-font;
+                font-family: 'futura', Tahoma, Geneva, Verdana, sans-serif;
+                position: relative;
+                right: 20px;
+            }
+            
+            ul {
+                line-height: 40px;
+                color: $light-color;
+                font-family: 'Nunito Sans', sans-serif;
+                font-weight: 900;
+            }
+        }
+    }
+}
+
+// =============== projects I've done =============== 
+.works {
+    background-color: $light-color;
+
+    .works-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .selected-works {
+            color: $back-ground;
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            position: relative;
+            display: flex;
+            margin: 12rem 0 0 25.8rem;
+        }
+    }
+
+    .works-list {
+        margin-top: 10rem;
+        padding-bottom: 5rem;
+
+        a {
+            text-decoration: none;
+            color: $back-ground;
+            font-family: 'futura', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 6rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        span {
+            color: $blue-font;
+        }
+
+// =============== first project =============== 
+        .first-pr {
+            display: flex;
+            justify-content: center;
+            padding-bottom: 10rem;
+
+            .first-p-para {
+                padding-right: 5rem;
+
+                &::after {
+                    content: '';
+                    height: 5px;
+                    width: 100%;
+                    background-color: $blue-font;
+                    transform: scaleX(0);
+                    display: block;
+                    transform-origin: bottom right;
+                    transition: transform .2s ease-out;
+                }
+
+                &:hover::after {
+                    transform: scaleX(1);
+                    transform-origin: bottom left;
+                }
+            }
+        }
+
+// =============== second project =============== 
+        .second-pr {
+            display: flex;
+            justify-content: center;
+            padding-bottom: 10rem;
+
+            .second-p-para {
+                padding-left: 5rem;
+                color: $pink-color;
+
+                &::after {
+                    content: '';
+                    height: 5px;
+                    width: 100%;
+                    background-color: $pink-color;
+                    transform: scaleX(0);
+                    display: block;
+                    transform-origin: bottom left;
+                    transition: transform .2s ease-out;
+                }
+
+                &:hover::after {
+                    transform: scaleX(1);
+                    transform-origin: bottom right;
+                }
+            }
+        }
+
+// =============== third project =============== 
+        .third-pr {
+            display: flex;
+            justify-content: center;
+
+            .third-p-para {
+                padding-right: 5rem;
+
+                &::after {
+                    content: '';
+                    height: 5px;
+                    width: 100%;
+                    background-color: $blue-font;
+                    transform: scaleX(0);
+                    display: block;
+                    transform-origin: bottom right;
+                    transition: transform .2s ease-out;
+                }
+
+                &:hover::after {
+                    transform: scaleX(1);
+                    transform-origin: bottom left;
+                }
+            }
+        }
+
+        img {
+            height: 20rem;
+        }
+    }
+}
+
+// =============== contact page =============== 
+.contact {
+    height: 70vh;
+
+// =============== paragraphs =============== 
+    .whats-up {
+
+        .get-l {
+            width: 23px;
+            height: 2px;
+            background: $blue-font;
+            position: absolute;
+            margin: 1.5rem 0 0 26rem;
+
+        }
+
+        .get-in {
+            font-family: 'Nunito Sans', sans-serif;
+            color: $blue-font;
+            font-size: 2.5rem;
+            position: relative;
+            margin: 9.5rem 0 0 29rem;
+        }
+
+        .talk-to-me {
+            font-family: 'futura', Tahoma, Geneva, Verdana, sans-serif;
+            color: $light-color;       
+            position: relative;
+            font-size: 3rem;
+            width: 1200px; 
+            position: relative;
+            margin: 2rem 0 0 26rem;
+        }
+    }
+
+// =============== email and phone number =============== 
+    .hit-me-up {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        margin-top: 4rem;
+
+        .first-contact {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            align-content: center;
+            flex-direction: column;
+            line-height: 2rem;
+            font-size: 1.2rem;
+            margin-right: 11rem;
+
+
+            .email-para {
+                color: $grey-font;
+                font-family: 'Nunito Sans', sans-serif;
+            }
+
+            .e-l-p {
+                background-color: $grey-font;
+                height: 3px;
+                width: 20px;
+                border-radius: 100%;
+            }
+
+            .phone-para {
+                color: $grey-font;
+                font-family: 'Nunito Sans', sans-serif;
+            }
+        }
+
+        a {
+            display: flex;
+            font-size: 1.2rem;
+            line-height: 2rem;
+            text-decoration: none;
+            color: $grey-font;
+            font-weight: 500;
+            color: $pink-color;
+        }
+    }
+}
+
+// =============== footer =============== 
+footer {
+    background-color: $darker-background;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
